@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,11 +13,11 @@ namespace Lms.Service
 {
     public class StudentService
     {
-        private StudentRepository repository;
+        private BaseRepository<Student> repository;
 
         public StudentService()
         {
-            this.repository = new StudentRepository();
+           repository = new BaseRepository<Student>();
 
         }
 
@@ -57,17 +58,22 @@ namespace Lms.Service
             }
 
             students = students.Skip((request.Page - 1) * 10).Take(request.PerPageCount);
-            var list = students.ToList().ConvertAll(x => new StudentGridViewModel()
-            {
-                Phone = x.Phone,
-                Name = x.Name,
-                Created = x.Created.ToString(),
-                CreatedBy = x.CreatedBy,
-                Id = x.Id,
-                //   Modified = x.Modified,
-                ModifiedBy = x.ModifiedBy
-            });
+            var list = students.ToList().ConvertAll(x => new StudentGridViewModel(x)
+            );
             return list;
+        }
+
+        public StudentDetailViewModel Detail(string id)
+        {
+            Student x = this.repository.GetDetail(id);
+            if (x== null)
+            {
+                throw new ObjectNotFoundException();
+            }
+
+            var vm = new StudentDetailViewModel(x);
+           
+            return vm;
         }
 
     }
