@@ -7,7 +7,7 @@ using Model;
 
 namespace ViewModel
 {
-    public class BaseViewModel
+    public class BaseViewModel <T> where T: Entiry
     {
 
         public BaseViewModel(Entiry entiry)

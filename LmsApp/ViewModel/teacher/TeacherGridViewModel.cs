@@ -7,7 +7,7 @@ using Model;
 
 namespace ViewModel.teacher
 {
-    public class TeacherGridViewModel : BaseViewModel
+    public class TeacherGridViewModel : BaseViewModel<Teacher>
     {
 
         public TeacherGridViewModel(Teacher teacher) : base(teacher)

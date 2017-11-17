@@ -2,7 +2,7 @@
 
 namespace ViewModel
 {
-    public class StudentGridViewModel : BaseViewModel
+    public class StudentGridViewModel : BaseViewModel<Student>
     {
         public StudentGridViewModel(Student student) : base(student)
         {

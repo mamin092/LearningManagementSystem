@@ -2,7 +2,7 @@
 
 namespace ViewModel
 {
-    public class StudentDetailViewModel : BaseViewModel
+    public class StudentDetailViewModel : BaseViewModel<Student>
     {
         public StudentDetailViewModel(Student student) : base(student)
         {
@@ -14,5 +14,14 @@ namespace ViewModel
         public string Name { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
+    }
+
+    public class StudentViewModel : BaseViewModel<Student>
+    {
+
+        public StudentViewModel (Entiry entiry): base(entiry)
+        {
+
+        }
     }
 }
