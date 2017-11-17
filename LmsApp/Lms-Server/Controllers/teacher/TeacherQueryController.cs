@@ -13,8 +13,8 @@ namespace Lms_Server.Controllers.teacher
     {
         public IHttpActionResult Post(TeacherRequestModel request)
         {
-            TeacherService service = new TeacherService();
-           var teachers = service.Search(request);
+            var service = new TeacherService();
+            var teachers = service.Search(request);
             return this.Ok(teachers);
         }
     }

@@ -22,5 +22,9 @@ namespace Model
         [Required]
         [MaxLength(20)]
         public string Phone { get; set; }
+        [Index]
+        [MaxLength(50)]
+        public string Email { get; set; }
+
     }
 }

@@ -2,23 +2,23 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using Lms.Repository;
 using Model;
 using RequestModel;
 using ViewModel;
 using ViewModel.teacher;
+using System.Linq.Expressions;
 
 namespace Lms.Service
 {
-    public class TeacherService
+    public class TeacherService : BaseService<Teacher>
     {
-        private BaseRepository<Teacher> repository;
+        private GenericRepository<Teacher> repository;
 
         public TeacherService()
         {
-            this.repository = new BaseRepository<Teacher>();
+            this.repository = new GenericRepository<Teacher>();
         }
 
         public bool Add(Teacher teacher)
@@ -28,41 +28,20 @@ namespace Lms.Service
 
         public List<TeacherGridViewModel> Search(TeacherRequestModel request)
         {
-            IQueryable<Teacher> teachers = this.repository.Get();
 
-            if (!string.IsNullOrWhiteSpace(request.Name))
-            {
-                teachers = teachers.Where(x => x.Name.ToLower().Contains(request.Name.ToLower()));
-             
-            }
-            teachers = teachers.OrderBy(x => x.Modified);
-            //if (!string.IsNullOrWhiteSpace(request.OrderBy))
-            //{
-            //    if (request.OrderBy.ToLower()=="name")
-            //    {
-            //        teachers = request.IsAscending
-            //            ? teachers.OrderBy(x => x.Name)
-            //            : teachers.OrderByDescending(x => x.Name);
-            //    }
-            //}
-            if (!string.IsNullOrWhiteSpace(request.OrderBy) && request.OrderBy.ToLower() == "name")
-            {
-                teachers = request.IsAscending
-                    ? teachers.OrderBy(x => x.Name)
-                    : teachers.OrderByDescending(x => x.Name);
-            }
-
-            teachers = teachers.Skip((request.Page - 1) * 10).Take(request.PerPageCount);
+            var teachers = base.SearcgQueryable(request);
 
             var list = teachers.ToList().ConvertAll(x => new TeacherGridViewModel(x));
             return list;
+
         }
+
 
 
         public TeacherDetailViewModel Detail(string id)
         {
             Teacher x = this.repository.GetDetail(id);
-            if (x==null)
+            if (x == null)
             {
                 throw new ObjectNotFoundException();
             }

@@ -5,32 +5,33 @@ using Model;
 
 namespace Lms.Repository
 {
-    public class BaseRepository<T> where T:Entiry
+    public class GenericRepository<T> : IGenericRepository<T>
+        where T : Entiry
     {
         protected BusinessDbContext db;
 
-        public BaseRepository()
+        public GenericRepository()
         {
             this.db = new BusinessDbContext();
         }
 
-        public bool Add(T entry)
+        public bool Add(T entity)
         {
-            DbSet<T> dbSet = this.db.Set<T>();
-            T add = dbSet.Add(entry);
+          DbSet<T> dbSet=  this.db.Set<T>();
+            T add = dbSet.Add(entity);
             int i = this.db.SaveChanges();
             return i > 0;
         }
-
         public IQueryable<T> Get()
         {
             DbSet<T> dbSet = this.db.Set<T>();
             return dbSet.AsQueryable();
+
         }
 
         public T GetDetail(string id)
         {
-           return this.db.Set<T>().Find(id);        
+            return this.db.Set<T>().Find(id);
         }
 
         public bool Edit(T entity)
@@ -43,8 +44,9 @@ namespace Lms.Repository
         public bool Delete(string id)
         {
             var entity = GetDetail(id);
-            if (entity!=null)
+            if (entity != null)
             {
+
                 this.db.Set<T>().Remove(entity);
                 int i = this.db.SaveChanges();
                 return i > 0;

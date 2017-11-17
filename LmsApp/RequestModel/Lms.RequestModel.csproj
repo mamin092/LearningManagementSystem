@@ -45,5 +45,11 @@
     <Compile Include="StudentRequestModel.cs" />
     <Compile Include="TeacherRequestModel.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Lms.Model.csproj">
+      <Project>{AD408085-4866-42A2-A6B6-F68A23A6F674}</Project>
+      <Name>Lms.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

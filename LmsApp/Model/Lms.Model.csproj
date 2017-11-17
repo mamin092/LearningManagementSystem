@@ -57,6 +57,10 @@
     <Compile Include="Migrations\201710260226501_Change Student Propati data type.Designer.cs">
       <DependentUpon>201710260226501_Change Student Propati data type.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711131327207_AddedEmail.cs" />
+    <Compile Include="Migrations\201711131327207_AddedEmail.Designer.cs">
+      <DependentUpon>201711131327207_AddedEmail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs" />
@@ -72,6 +76,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710260226501_Change Student Propati data type.resx">
       <DependentUpon>201710260226501_Change Student Propati data type.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711131327207_AddedEmail.resx">
+      <DependentUpon>201711131327207_AddedEmail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

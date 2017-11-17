@@ -15,7 +15,7 @@ namespace Lms_Server.Controllers.student
         public IHttpActionResult Post(StudentRequestModel request)
         {
             StudentService service = new StudentService();
-           var students = service.Search(request);
+            var students = service.Search(request);
             return this.Ok(students);
         }
     }
