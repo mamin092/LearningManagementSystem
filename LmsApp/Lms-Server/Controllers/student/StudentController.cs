@@ -9,18 +9,11 @@ namespace Lms_Server.Controllers.student
 {
     using Lms.Service;
     using Model;
-
-    public class StudentController : ApiController
+    using RequestModel;
+    using ViewModel;
+    [RoutePrefix("api/Student")]
+    public class StudentController : BaseController<Student,StudentRequestModel,StudentViewModel>
     {
-        public IHttpActionResult Post(Student student)
-        {
-            if (ModelState.IsValid)
-            {
-                return this.BadRequest("Please all field fill up");
-            }
-            StudentService service = new StudentService();
-           var add = service.Add(student);
-            return this.Ok(add);
-        }
+    
     }
 }

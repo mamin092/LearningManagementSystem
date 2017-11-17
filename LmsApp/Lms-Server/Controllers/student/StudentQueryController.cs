@@ -6,17 +6,15 @@ using System.Net.Http;
 using System.Web.Http;
 using Lms.Service;
 using RequestModel;
+using ViewModel;
+using Model;
 
 namespace Lms_Server.Controllers.student
 {
-    public class StudentQueryController : ApiController
+    [RoutePrefix("api/StudentQuery")]
+    public class StudentQueryController : BaseQueryController <Student,StudentRequestModel,StudentViewModel>
     {
 
-        public IHttpActionResult Post(StudentRequestModel request)
-        {
-            StudentService service = new StudentService();
-            var students = service.Search(request);
-            return this.Ok(students);
-        }
+       
     }
 }
