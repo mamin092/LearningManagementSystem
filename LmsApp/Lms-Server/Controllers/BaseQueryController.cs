@@ -6,16 +6,18 @@ using ViewModel;
 
 namespace Lms_Server.Controllers
 {
-    public class BaseQueryController<T, Tr, Tv> : ApiController  where T: Entiry where Tr: BaseRequestModel<T> where Tv: BaseViewModel<T>
+    public class BaseQueryController<T, TR, TV> : ApiController where T : Entity where TR : BaseRequestModel<T> where TV : BaseViewModel<T>
     {
         [Route("Search")]
         [ActionName("Search")]
         [HttpPost]
-        public IHttpActionResult Search(Tr request)
+        public IHttpActionResult Search(TR request)
+
         {
-            var service = new BaseService<T, Tr, Tv>();
-            var models = service.Search(request);
-            return this.Ok(models);
+            var service = new BaseService<T, TR, TV>();
+            var students = service.Search(request);
+            return this.Ok(students);
         }
     }
+
 }

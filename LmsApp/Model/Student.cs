@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Student : Entiry
+    public class Student : Entity
     {
 
         [Index]

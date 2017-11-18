@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace RequestModel
 {
-    public abstract class BaseRequestModel<T> where T: Entiry
+    public abstract class BaseRequestModel<T> where T: Entity
     {
         protected Expression<Func<T, bool>> ExpressionObject = e => true;
         public BaseRequestModel()

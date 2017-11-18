@@ -6,7 +6,7 @@ using Model;
 namespace Lms.Repository
 {
     public class GenericRepository<T> : IGenericRepository<T>
-        where T : Entiry
+        where T : Entity
     {
         protected BusinessDbContext db;
 

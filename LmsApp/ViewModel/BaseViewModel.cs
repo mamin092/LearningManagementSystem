@@ -7,10 +7,10 @@ using Model;
 
 namespace ViewModel
 {
-    public class BaseViewModel <T> where T: Entiry
+    public class BaseViewModel <T> where T: Entity
     {
 
-        public BaseViewModel(Entiry entiry)
+        public BaseViewModel(Entity entiry)
         {
             Id = entiry.Id;
             Created = entiry.Created;

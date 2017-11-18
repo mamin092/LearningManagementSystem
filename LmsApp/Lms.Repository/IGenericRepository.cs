@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Lms.Repository
 {
    public interface IGenericRepository<T>
-        where T: Entiry
+        where T: Entity
     {
         bool Add(T entity);
 

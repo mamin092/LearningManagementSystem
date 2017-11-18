@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessDbContext.cs" />
+    <Compile Include="Course.cs" />
     <Compile Include="Entiry.cs" />
     <Compile Include="Migrations\201710251616519_Add Student and Teacher model.cs" />
     <Compile Include="Migrations\201710251616519_Add Student and Teacher model.Designer.cs">
@@ -60,6 +61,10 @@
     <Compile Include="Migrations\201711131327207_AddedEmail.cs" />
     <Compile Include="Migrations\201711131327207_AddedEmail.Designer.cs">
       <DependentUpon>201711131327207_AddedEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711180757255_CourseAddedInitially.cs" />
+    <Compile Include="Migrations\201711180757255_CourseAddedInitially.Designer.cs">
+      <DependentUpon>201711180757255_CourseAddedInitially.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711131327207_AddedEmail.resx">
       <DependentUpon>201711131327207_AddedEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711180757255_CourseAddedInitially.resx">
+      <DependentUpon>201711180757255_CourseAddedInitially.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

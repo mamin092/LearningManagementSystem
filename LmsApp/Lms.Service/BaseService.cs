@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace Lms.Service
 {
     
-    public class BaseService<T,Tr,Tv> where T : Entiry where Tr: BaseRequestModel<T> where Tv: BaseViewModel<T>
+    public class BaseService<T,Tr,Tv> where T : Entity where Tr: BaseRequestModel<T> where Tv: BaseViewModel<T>
     {
         GenericRepository<T> repository;
         public BaseService()

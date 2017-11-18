@@ -19,7 +19,7 @@ namespace ViewModel
     public class StudentViewModel : BaseViewModel<Student>
     {
 
-        public StudentViewModel (Entiry entiry): base(entiry)
+        public StudentViewModel (Entity entiry): base(entiry)
         {
 
         }

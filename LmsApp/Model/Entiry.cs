@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model
 {
-    public class Entiry
+    public class Entity
     {
         public string Id { get; set; }
 
