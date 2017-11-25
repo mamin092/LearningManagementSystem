@@ -30,7 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,8 +48,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseRequestModel.cs" />
+    <Compile Include="ContentRequestModel.cs" />
     <Compile Include="CourseRequestModel.cs" />
+    <Compile Include="EnrollmentRequestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudentContentRequestModel.cs" />
     <Compile Include="StudentRequestModel.cs" />
     <Compile Include="TeacherRequestModel.cs" />
   </ItemGroup>
@@ -51,6 +61,13 @@
       <Project>{AD408085-4866-42A2-A6B6-F68A23A6F674}</Project>
       <Name>Lms.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

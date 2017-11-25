@@ -31,10 +31,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -48,7 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessDbContext.cs" />
+    <Compile Include="Content.cs" />
     <Compile Include="Course.cs" />
+    <Compile Include="Enrollment.cs" />
     <Compile Include="Entiry.cs" />
     <Compile Include="Migrations\201710251616519_Add Student and Teacher model.cs" />
     <Compile Include="Migrations\201710251616519_Add Student and Teacher model.Designer.cs">
@@ -66,9 +68,18 @@
     <Compile Include="Migrations\201711180757255_CourseAddedInitially.Designer.cs">
       <DependentUpon>201711180757255_CourseAddedInitially.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711200535236_Added NewPropates Course and teacher model.cs" />
+    <Compile Include="Migrations\201711200535236_Added NewPropates Course and teacher model.Designer.cs">
+      <DependentUpon>201711200535236_Added NewPropates Course and teacher model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711250522428_Added Conten Enrollment and StudentContent.cs" />
+    <Compile Include="Migrations\201711250522428_Added Conten Enrollment and StudentContent.Designer.cs">
+      <DependentUpon>201711250522428_Added Conten Enrollment and StudentContent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs" />
+    <Compile Include="StudentContent.cs" />
     <Compile Include="Teacher.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +98,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711180757255_CourseAddedInitially.resx">
       <DependentUpon>201711180757255_CourseAddedInitially.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711200535236_Added NewPropates Course and teacher model.resx">
+      <DependentUpon>201711200535236_Added NewPropates Course and teacher model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711250522428_Added Conten Enrollment and StudentContent.resx">
+      <DependentUpon>201711250522428_Added Conten Enrollment and StudentContent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -7,13 +7,9 @@ using Model;
 
 namespace ViewModel.teacher
 {
-    public class TeacherGridViewModel : BaseViewModel<Teacher>
+    public class TeacherGridViewModel 
     {
 
-        public TeacherGridViewModel(Teacher teacher) : base(teacher)
-        {
-            Name = teacher.Name;
-        }
 
         public string Name { get; set; }
     }

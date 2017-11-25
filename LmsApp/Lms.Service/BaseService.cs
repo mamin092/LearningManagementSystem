@@ -18,17 +18,15 @@ namespace Lms.Service
         {
             repository = new GenericRepository<T>();
         }
-        public IQueryable<T> SearcgQueryable(BaseRequestModel<T> requset)
+        public IQueryable<T> SearchQueryable(BaseRequestModel<T> request)
         {
-
-           
-            IQueryable<T> students = repository.Get();
-            Expression<Func<T, bool>> expression = requset.GetExpression();
-            students = students.Where(expression);
-            students = requset.OrderByFunc()(students);
-            students = requset.SkipAndTake(students);
-            return students;
-
+            IQueryable<T> queryable = repository.Get();
+            Expression<Func<T, bool>> expression = request.GetExpression();
+            queryable = queryable.Where(expression);
+            queryable = request.OrderByFunc()(queryable);
+            queryable = request.SkipAndTake(queryable);
+            queryable = request.IncludeParents(queryable);
+            return queryable;
         }
         public bool Add(T model)
         {
@@ -38,7 +36,7 @@ namespace Lms.Service
         }
         public List<Tv> Search(Tr request)
         {
-            var queryable = SearcgQueryable(request);
+            var queryable = SearchQueryable(request);
             var list = queryable.ToList().ConvertAll(CreateVmInstance);
             return list;
         }

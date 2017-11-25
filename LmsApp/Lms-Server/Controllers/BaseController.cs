@@ -16,7 +16,7 @@ namespace Lms_Server.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return this.BadRequest("bhai, please sob field fill up koren");
+                return this.BadRequest(ModelState);
             }
 
             model.Id = Guid.NewGuid().ToString();
