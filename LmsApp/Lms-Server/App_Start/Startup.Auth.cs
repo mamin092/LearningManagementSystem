@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using Lms_Server.Providers;
 using Lms_Server.Models;
+using Lms.IdentityModel;
 
 namespace Lms_Server
 {

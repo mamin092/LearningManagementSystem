@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -12,5 +13,8 @@ namespace Lms_Server.Controllers.student
     [RoutePrefix("api/StudentContent")]
     public class StudentContentController : BaseController<StudentContent, StudentContentRequestModel, StudentContentViewModel>
     {
+        public StudentContentController(DbContext dbContext) : base(dbContext)
+        {
+        }
     }
 }

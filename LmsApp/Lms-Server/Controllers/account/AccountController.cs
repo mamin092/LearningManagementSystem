@@ -16,6 +16,7 @@ using Microsoft.Owin.Security.OAuth;
 using Lms_Server.Models;
 using Lms_Server.Providers;
 using Lms_Server.Results;
+using Lms.IdentityModel;
 
 namespace Lms_Server.Controllers
 {
@@ -36,6 +37,8 @@ namespace Lms_Server.Controllers
             UserManager = userManager;
             AccessTokenFormat = accessTokenFormat;
         }
+
+
 
         public ApplicationUserManager UserManager
         {
@@ -125,7 +128,7 @@ namespace Lms_Server.Controllers
 
             IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
                 model.NewPassword);
-            
+
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -258,9 +261,9 @@ namespace Lms_Server.Controllers
             if (hasRegistered)
             {
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-                
-                 ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
-                    OAuthDefaults.AuthenticationType);
+
+                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
+                   OAuthDefaults.AuthenticationType);
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
@@ -368,7 +371,7 @@ namespace Lms_Server.Controllers
             result = await UserManager.AddLoginAsync(user.Id, info.Login);
             if (!result.Succeeded)
             {
-                return GetErrorResult(result); 
+                return GetErrorResult(result);
             }
             return Ok();
         }

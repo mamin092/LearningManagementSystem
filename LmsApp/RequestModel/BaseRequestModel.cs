@@ -57,6 +57,7 @@ namespace RequestModel
         }
 
         public abstract Expression<Func<T, bool>> GetExpression();
+
         public virtual IQueryable<T> IncludeParents(IQueryable<T> queryable)
         {
             return queryable;
@@ -79,6 +80,7 @@ namespace RequestModel
 
                 expression = expression.And(x => x.Modified >= Start && x.Modified <= End);
             }
+
             return expression;
         }
     }

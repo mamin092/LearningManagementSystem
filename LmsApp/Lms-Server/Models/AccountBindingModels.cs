@@ -31,7 +31,16 @@ namespace Lms_Server.Models
         [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
+    public class RoleBindingModel
+    {
+        [Required]
+        [Display(Name = "Name")]
+        public string Name { get; set; }
 
+        [Required]
+        [Display(Name = "LandingRoute")]
+        public string LandingRoute { get; set; }
+    }
     public class RegisterBindingModel
     {
         [Required]

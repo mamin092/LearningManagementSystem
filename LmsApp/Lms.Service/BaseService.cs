@@ -1,23 +1,37 @@
-﻿using System;
-using System.Data;
-using System.Linq;
-using Lms.Repository;
-using Model;
-using RequestModel;
-using System.Linq.Expressions;
-using ViewModel;
-using System.Collections.Generic;
+﻿
 
 namespace Lms.Service
 {
-    
-    public class BaseService<T,Tr,Tv> where T : Entity where Tr: BaseRequestModel<T> where Tv: BaseViewModel<T>
+
+    using System;
+    using System.CodeDom;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Linq.Expressions;
+
+
+
+    using Repository;
+    using RequestModel;
+    using ViewModel;
+    using Model;
+    using System.Data.Entity.Core;
+
+    public class BaseService<T, TR, TV> where T : Entity where TR : BaseRequestModel<T> where TV : BaseViewModel<T>
     {
         GenericRepository<T> repository;
+
+        public BaseService(DbContext dbContext)
+        {
+            repository = new GenericRepository<T>(dbContext);
+        }
+
         public BaseService()
         {
-            repository = new GenericRepository<T>();
         }
+
         public IQueryable<T> SearchQueryable(BaseRequestModel<T> request)
         {
             IQueryable<T> queryable = repository.Get();
@@ -28,24 +42,15 @@ namespace Lms.Service
             queryable = request.IncludeParents(queryable);
             return queryable;
         }
+
+
         public bool Add(T model)
         {
-
-
             return repository.Add(model);
         }
-        public List<Tv> Search(Tr request)
-        {
-            var queryable = SearchQueryable(request);
-            var list = queryable.ToList().ConvertAll(CreateVmInstance);
-            return list;
-        }
 
-        private static Tv CreateVmInstance(T x)
-        {
-            return (Tv)Activator.CreateInstance(typeof(Tv), x); 
-        }
-        public Tv Detail(string id) 
+
+        public TV Detail(string id)
         {
             T x = repository.GetDetail(id);
             if (x == null)
@@ -54,8 +59,20 @@ namespace Lms.Service
             }
 
             var vm = CreateVmInstance(x);
-
             return vm;
+        }
+
+        public List<TV> Search(TR request)
+        {
+            var queryable = SearchQueryable(request);
+            List<T> list1 = queryable.ToList();
+            var list = list1.ConvertAll(CreateVmInstance);
+            return list;
+        }
+
+        private static TV CreateVmInstance(T x)
+        {
+            return (TV)Activator.CreateInstance(typeof(TV), x);
         }
 
     }

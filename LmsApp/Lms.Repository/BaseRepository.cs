@@ -10,7 +10,7 @@ namespace Lms.Repository
     {
         protected BusinessDbContext db;
 
-        public GenericRepository()
+        public GenericRepository(DbContext dbContext)
         {
             this.db = new BusinessDbContext();
         }

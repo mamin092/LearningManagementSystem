@@ -19,9 +19,17 @@ namespace ViewModel
     public class StudentViewModel : BaseViewModel<Student>
     {
 
-        public StudentViewModel (Entity entiry): base(entiry)
+        public StudentViewModel(Student student)
+             : base(student)
         {
-
+            this.Name = student.Name;
+            this.Phone = student.Phone;
+            this.Email = student.Email;
+            this.Address = student.Address;
         }
+        public string Name { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public string Address { get; set; }
     }
 }

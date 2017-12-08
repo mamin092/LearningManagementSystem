@@ -76,6 +76,10 @@
     <Compile Include="Migrations\201711250522428_Added Conten Enrollment and StudentContent.Designer.cs">
       <DependentUpon>201711250522428_Added Conten Enrollment and StudentContent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711261237385_Modify Model Data Type.cs" />
+    <Compile Include="Migrations\201711261237385_Modify Model Data Type.Designer.cs">
+      <DependentUpon>201711261237385_Modify Model Data Type.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs" />
@@ -104,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711250522428_Added Conten Enrollment and StudentContent.resx">
       <DependentUpon>201711250522428_Added Conten Enrollment and StudentContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711261237385_Modify Model Data Type.resx">
+      <DependentUpon>201711261237385_Modify Model Data Type.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

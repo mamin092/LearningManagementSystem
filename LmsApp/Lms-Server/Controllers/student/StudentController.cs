@@ -7,13 +7,16 @@ using System.Web.Http;
 
 namespace Lms_Server.Controllers.student
 {
+    using System.Data.Entity;
     using Lms.Service;
     using Model;
     using RequestModel;
     using ViewModel;
     [RoutePrefix("api/Student")]
-    public class StudentController : BaseController<Student,StudentRequestModel,StudentViewModel>
+    public class StudentController : BaseController<Student, StudentRequestModel, StudentViewModel>
     {
-    
+        public StudentController(DbContext dbContext) : base(dbContext)
+        {
+        }
     }
 }
