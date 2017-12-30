@@ -8,9 +8,9 @@ namespace Lms.Repository
     public class GenericRepository<T> : IGenericRepository<T>
         where T : Entity
     {
-        protected BusinessDbContext db;
+        protected DbContext db;
 
-        public GenericRepository(DbContext dbContext)
+        public GenericRepository()
         {
             this.db = new BusinessDbContext();
         }

@@ -8,7 +8,7 @@ using Model;
 using RequestModel;
 using ViewModel;
 
-namespace Lms_Server.Controllers
+namespace Lms.Server.Controllers
 {
     [RoutePrefix("api/ContentQuery")]
     public class ContentQueryController : BaseQueryController<Content, ContentRequestModel, ContentViewModel>

@@ -11,10 +11,10 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using Lms_Server.Areas.HelpPage.ModelDescriptions;
-using Lms_Server.Areas.HelpPage.Models;
+using LmsServer.Areas.HelpPage.ModelDescriptions;
+using LmsServer.Areas.HelpPage.Models;
 
-namespace Lms_Server.Areas.HelpPage
+namespace LmsServer.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {

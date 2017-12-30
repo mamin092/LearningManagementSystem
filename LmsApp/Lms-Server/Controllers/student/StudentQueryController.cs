@@ -9,7 +9,7 @@ using RequestModel;
 using ViewModel;
 using Model;
 
-namespace Lms_Server.Controllers.student
+namespace Lms.Server.Controllers.student
 {
     [RoutePrefix("api/StudentQuery")]
     public class StudentQueryController : BaseQueryController <Student,StudentRequestModel,StudentViewModel>

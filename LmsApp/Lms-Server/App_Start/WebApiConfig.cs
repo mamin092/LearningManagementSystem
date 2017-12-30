@@ -8,24 +8,27 @@ using System.Web.Http.Cors;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 
-namespace Lms_Server
+namespace Lms.Server
 {
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            // ICorsPolicyProvider policy = new EnableCorsAttribute("*", "*", "*");
+            // config.EnableCors(policy);
+            // Configure Web API to use only bearer token authentication.
 
+            config.SuppressDefaultHostAuthentication();
+            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+                
             config.Formatters.Clear();
             config.Formatters.Add(new JsonMediaTypeFormatter());
 
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-           ICorsPolicyProvider policy = new EnableCorsAttribute("*", "*", "*");
-            config.EnableCors(policy);
-            // Configure Web API to use only bearer token authentication.
-            config.SuppressDefaultHostAuthentication();
-            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
+            // authentication scheme add
+            config.Filters.Add(new AuthorizeAttribute());
 
 
             // Web API routes

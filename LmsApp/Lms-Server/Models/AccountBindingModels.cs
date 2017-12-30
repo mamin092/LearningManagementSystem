@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 
-namespace Lms_Server.Models
+namespace LmsServer.Models
 {
     // Models used as parameters to AccountController actions.
 
@@ -31,6 +31,7 @@ namespace Lms_Server.Models
         [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
+   
     public class RoleBindingModel
     {
         [Required]
@@ -40,6 +41,14 @@ namespace Lms_Server.Models
         [Required]
         [Display(Name = "LandingRoute")]
         public string LandingRoute { get; set; }
+    }
+    public class UserRoleBindingModel
+    {
+        [Required]
+        public string UserId { get; set; }
+        [Required]
+        public string RoleId { get; set; }
+
     }
     public class RegisterBindingModel
     {

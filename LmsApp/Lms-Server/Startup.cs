@@ -4,9 +4,9 @@ using System.Linq;
 using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(Lms_Server.Startup))]
+[assembly: OwinStartup(typeof(Lms.Server.Startup))]
 
-namespace Lms_Server
+namespace Lms.Server
 {
     public partial class Startup
     {

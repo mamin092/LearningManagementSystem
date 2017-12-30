@@ -8,13 +8,15 @@ using System.Threading.Tasks;
 namespace Lms.Repository
 {
    public interface IGenericRepository<T>
-        where T: Entity
+        where T: class
     {
         bool Add(T entity);
 
         IQueryable<T> Get();
 
         T GetDetail(string id);
+
+        bool Edit(T entity);
 
         bool Delete(string id);
     }

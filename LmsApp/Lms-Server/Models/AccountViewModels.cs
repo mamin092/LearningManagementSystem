@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Lms_Server.Models
+namespace LmsServer.Models
 {
     // Models returned by AccountController actions.
 

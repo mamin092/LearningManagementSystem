@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Lms_Server
+namespace Lms.Server
 {
     public class RouteConfig
     {

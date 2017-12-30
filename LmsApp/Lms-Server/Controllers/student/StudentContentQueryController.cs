@@ -7,7 +7,7 @@ using System.Web.Http;
 using Model;
 using RequestModel;
 using ViewModel;
-namespace Lms_Server.Controllers.student
+namespace Lms.Server.Controllers.student
 {
     [RoutePrefix("api/StudentContentQuery")]
 

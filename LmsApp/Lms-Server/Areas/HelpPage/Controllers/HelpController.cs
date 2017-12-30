@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using Lms_Server.Areas.HelpPage.ModelDescriptions;
-using Lms_Server.Areas.HelpPage.Models;
+using LmsServer.Areas.HelpPage.ModelDescriptions;
+using LmsServer.Areas.HelpPage.Models;
 
-namespace Lms_Server.Areas.HelpPage.Controllers
+namespace LmsServer.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

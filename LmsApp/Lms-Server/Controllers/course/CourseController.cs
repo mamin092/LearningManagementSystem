@@ -5,9 +5,9 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace Lms_Server.Controllers.course
+namespace Lms.Server.Controllers.course
 {
-    using System.Data.Entity;
+   
     using Model;
     using RequestModel;
     using ViewModel;
@@ -15,8 +15,6 @@ namespace Lms_Server.Controllers.course
     [RoutePrefix("api/Course")]
     public class CourseController : BaseController<Course, CourseRequestModel, CourseViewModel>
     {
-        public CourseController(DbContext dbContext) : base(dbContext)
-        {
-        }
+      
     }
 }

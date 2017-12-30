@@ -1,12 +1,8 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
+﻿
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Lms.IdentityModel
+namespace Lms.Server.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -20,8 +16,9 @@ namespace Lms.IdentityModel
             return new ApplicationDbContext();
         }
 
-        public IDbSet<Resource> Resources { get; set; }
+        public IDbSet<AspNetResource> AspNetResources { get; set; }
+        public IDbSet<AspNetPermission> AspNetPermissions { get; set; }
 
-        public IDbSet<Permission> Permissions { get; set; }
+        public System.Data.Entity.DbSet<Lms.Server.Models.ApplicationRole> IdentityRoles { get; set; }
     }
 }

@@ -8,12 +8,14 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using Lms_Server.Providers;
-using Lms_Server.Models;
-using Lms.IdentityModel;
+using Lms.Server.Providers;
+using Lms.Server.Models;
 
-namespace Lms_Server
+
+
+namespace Lms.Server
 {
+    using Microsoft.Owin.Cors;
     public partial class Startup
     {
         public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }
@@ -27,6 +29,8 @@ namespace Lms_Server
             app.CreatePerOwinContext(ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
 
+
+            app.UseCors(CorsOptions.AllowAll);
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
             app.UseCookieAuthentication(new CookieAuthenticationOptions());

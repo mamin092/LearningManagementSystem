@@ -1,5 +1,4 @@
 ﻿
-
 namespace Lms.Service
 {
 
@@ -23,14 +22,12 @@ namespace Lms.Service
     {
         GenericRepository<T> repository;
 
-        public BaseService(DbContext dbContext)
-        {
-            repository = new GenericRepository<T>(dbContext);
-        }
-
         public BaseService()
         {
+            repository = new GenericRepository<T>();
         }
+                
+     
 
         public IQueryable<T> SearchQueryable(BaseRequestModel<T> request)
         {

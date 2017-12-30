@@ -1,19 +1,19 @@
 ﻿using Lms.Service;
+using Microsoft.AspNet.Identity;
 using Model;
 using RequestModel;
 using System;
 using System.Web.Http;
 using ViewModel;
-using Lms.IdentityModel;
 
-namespace Lms_Server.Controllers
+namespace Lms.Server.Controllers
 {
     public class BaseController<T, TR, TV> : ApiController where T : Entity where TR : BaseRequestModel<T> where TV : BaseViewModel<T>
     {
         private BaseService<T, TR, TV> service;
-        public BaseController(System.Data.Entity.DbContext dbContext)
+        public BaseController()
         {
-            service = new BaseService<T, TR, TV>(dbContext);
+            service = new BaseService<T, TR, TV>();
         }
         [HttpPost]
         [Route("Add")]
@@ -24,9 +24,9 @@ namespace Lms_Server.Controllers
             {
                 return this.BadRequest(ModelState);
             }
-
-            model.Id = Guid.NewGuid().ToString();
-            var service = new BaseService<T, TR, TV>();
+            model.ModifiedBy = User.Identity.GetUserName();
+            model.ModifiedBy = User.Identity.GetUserName();
+            model.Id = Guid.NewGuid().ToString();           
             var add = service.Add(model);
             return this.Ok(add);
         }

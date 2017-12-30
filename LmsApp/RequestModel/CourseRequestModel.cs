@@ -16,7 +16,8 @@ namespace RequestModel
             if (!string.IsNullOrWhiteSpace(Keyword))
             {
                 this.ExpressionObject = x =>
-                    x.Title.Contains(Keyword) || x.Tags.Contains(Keyword)|| x.Teacher.Name.Contains(Keyword);
+                    x.Title.Contains(Keyword) || x.Tags.Contains(Keyword)||
+                    x.Teacher.Name.Contains(Keyword);
             }
 
             this.ExpressionObject = this.ExpressionObject.And(this.GenerateBaseExpression());

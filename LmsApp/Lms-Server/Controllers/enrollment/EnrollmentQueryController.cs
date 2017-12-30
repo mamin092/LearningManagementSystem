@@ -7,7 +7,7 @@ using System.Web.Http;
 using Model;
 using RequestModel;
 using ViewModel;
-namespace Lms_Server.Controllers
+namespace Lms.Server.Controllers
 {
     [RoutePrefix("api/EnrollmentQuery")]
     public class EnrollmentQueryController : BaseQueryController<Enrollment,EnrollmentRequestModel, EnrollmentViewModel>

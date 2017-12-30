@@ -9,10 +9,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using Lms_Server.Models;
-using Lms.IdentityModel;
+using Lms.Server.Models;
 
-namespace Lms_Server.Providers
+namespace Lms.Server.Providers
 {
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {
@@ -23,13 +22,15 @@ namespace Lms_Server.Providers
             if (publicClientId == null)
             {
                 throw new ArgumentNullException("publicClientId");
-            }
+            }   
 
             _publicClientId = publicClientId;
         }
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
+            context.OwinContext.Request.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
+
             var userManager = context.OwinContext.GetUserManager<ApplicationUserManager>();
 
             ApplicationUser user = await userManager.FindAsync(context.UserName, context.Password);
@@ -91,7 +92,9 @@ namespace Lms_Server.Providers
         {
             IDictionary<string, string> data = new Dictionary<string, string>
             {
-                { "userName", userName }
+                { "userName", userName },
+                {"requestId", Guid.NewGuid().ToString() },
+                {"langdingRouter","root.home" } 
             };
             return new AuthenticationProperties(data);
         }

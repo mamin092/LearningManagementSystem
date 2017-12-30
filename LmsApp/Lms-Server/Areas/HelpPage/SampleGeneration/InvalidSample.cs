@@ -1,6 +1,6 @@
 using System;
 
-namespace Lms_Server.Areas.HelpPage
+namespace LmsServer.Areas.HelpPage
 {
     /// <summary>
     /// This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
