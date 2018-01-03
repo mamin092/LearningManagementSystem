@@ -57,7 +57,7 @@
             let self = this;
             self.isSignedIn = false;
             self.storageService.remove(LocalStorageKeys.UserInfo);
-            self.storageService.go('root.signin');
+            self.stateService.go('root.signin');
 
         }
 

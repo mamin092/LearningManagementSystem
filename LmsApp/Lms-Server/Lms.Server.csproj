@@ -270,9 +270,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712081502193_Init mig.cs" />
-    <Compile Include="Migrations\201712081502193_Init mig.Designer.cs">
-      <DependentUpon>201712081502193_Init mig.cs</DependentUpon>
+    <Compile Include="Migrations\201801021143232_InitIdentityModel.cs" />
+    <Compile Include="Migrations\201801021143232_InitIdentityModel.Designer.cs">
+      <DependentUpon>201801021143232_InitIdentityModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -382,8 +382,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712081502193_Init mig.resx">
-      <DependentUpon>201712081502193_Init mig.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801021143232_InitIdentityModel.resx">
+      <DependentUpon>201801021143232_InitIdentityModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

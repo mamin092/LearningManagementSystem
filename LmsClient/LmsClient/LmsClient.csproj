@@ -78,6 +78,10 @@
     <Content Include="Content\style.css" />
     <Content Include="Content\text-rotator.css" />
     <Content Include="index.html" />
+    <Content Include="partials\account\register.tpl.html" />
+    <Content Include="partials\account\signin.tpl.html" />
+    <Content Include="partials\course\course-list.tpl.html" />
+    <Content Include="partials\home\home.tpl.html" />
     <Content Include="Scripts\angular-ui-router.js" />
     <Content Include="Scripts\angular-ui-router.min.js" />
     <Content Include="Web.config" />
@@ -86,7 +90,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="app\account\AccountControllers.ts" />
+    <TypeScriptCompile Include="app\account\AccountService.ts" />
     <TypeScriptCompile Include="app\app.config.ts" />
+    <TypeScriptCompile Include="app\common\LocalStorageService.ts" />
+    <TypeScriptCompile Include="app\common\WebService.ts" />
+    <TypeScriptCompile Include="app\course\CoursesController.ts" />
+    <TypeScriptCompile Include="app\home\HomeController.ts" />
     <TypeScriptCompile Include="app\nav.controller.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-component-router.d.ts" />
@@ -102,20 +112,13 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\account\" />
-    <Folder Include="app\common\" />
     <Folder Include="app\content\" />
-    <Folder Include="app\course\" />
     <Folder Include="app\enrollment\" />
-    <Folder Include="app\home\" />
     <Folder Include="app\student\" />
     <Folder Include="app\teacher\" />
-    <Folder Include="partials\account\" />
     <Folder Include="partials\common\" />
     <Folder Include="partials\content\" />
-    <Folder Include="partials\course\" />
     <Folder Include="partials\enrollment\" />
-    <Folder Include="partials\home\" />
     <Folder Include="partials\student\" />
     <Folder Include="partials\teacher\" />
   </ItemGroup>

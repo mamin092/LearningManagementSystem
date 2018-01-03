@@ -1,4 +1,4 @@
-namespace Lms.IdentityModel.Migrations
+namespace Lms.Server.Migrations
 {
     using System;
     using System.Data.Entity;

@@ -1,14 +1,14 @@
-namespace Lms.IdentityModel.Migrations
+namespace Lms.Server.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initmig : DbMigration
+    public partial class InitIdentityModel : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Permissions",
+                "dbo.AspNetPermissions",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
@@ -23,7 +23,7 @@ namespace Lms.IdentityModel.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetRoles", t => t.RoleId)
-                .ForeignKey("dbo.Resources", t => t.ResourceId)
+                .ForeignKey("dbo.AspNetResources", t => t.ResourceId)
                 .Index(t => t.RoleId)
                 .Index(t => t.ResourceId)
                 .Index(t => t.Created)
@@ -59,18 +59,18 @@ namespace Lms.IdentityModel.Migrations
                         RoleId = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => new { t.UserId, t.RoleId })
-                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: false)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: false)
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
             
             CreateTable(
-                "dbo.Resources",
+                "dbo.AspNetResources",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
                         Name = c.String(nullable: false),
-                        Type = c.String(nullable: false),
+                        type = c.Int(nullable: false),
                         IsPublic = c.Boolean(nullable: false),
                         Created = c.DateTime(nullable: false),
                         CreatedBy = c.String(nullable: false, maxLength: 50),
@@ -88,6 +88,7 @@ namespace Lms.IdentityModel.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        RoleId = c.String(nullable: false, maxLength: 128),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -101,6 +102,8 @@ namespace Lms.IdentityModel.Migrations
                         UserName = c.String(nullable: false, maxLength: 256),
                     })
                 .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: false)
+                .Index(t => t.RoleId)
                 .Index(t => t.UserName, unique: true, name: "UserNameIndex");
             
             CreateTable(
@@ -113,7 +116,7 @@ namespace Lms.IdentityModel.Migrations
                         ClaimValue = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: false)
                 .Index(t => t.UserId);
             
             CreateTable(
@@ -125,7 +128,7 @@ namespace Lms.IdentityModel.Migrations
                         UserId = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: false)
                 .Index(t => t.UserId);
             
         }
@@ -133,18 +136,20 @@ namespace Lms.IdentityModel.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUsers", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Permissions", "ResourceId", "dbo.Resources");
-            DropForeignKey("dbo.Permissions", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.AspNetPermissions", "ResourceId", "dbo.AspNetResources");
+            DropForeignKey("dbo.AspNetPermissions", "RoleId", "dbo.AspNetRoles");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.Resources", new[] { "ModifiedBy" });
-            DropIndex("dbo.Resources", new[] { "Modified" });
-            DropIndex("dbo.Resources", new[] { "CreatedBy" });
-            DropIndex("dbo.Resources", new[] { "Created" });
+            DropIndex("dbo.AspNetUsers", new[] { "RoleId" });
+            DropIndex("dbo.AspNetResources", new[] { "ModifiedBy" });
+            DropIndex("dbo.AspNetResources", new[] { "Modified" });
+            DropIndex("dbo.AspNetResources", new[] { "CreatedBy" });
+            DropIndex("dbo.AspNetResources", new[] { "Created" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", new[] { "ModifiedBy" });
@@ -152,19 +157,19 @@ namespace Lms.IdentityModel.Migrations
             DropIndex("dbo.AspNetRoles", new[] { "CreatedBy" });
             DropIndex("dbo.AspNetRoles", new[] { "Created" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Permissions", new[] { "ModifiedBy" });
-            DropIndex("dbo.Permissions", new[] { "Modified" });
-            DropIndex("dbo.Permissions", new[] { "CreatedBy" });
-            DropIndex("dbo.Permissions", new[] { "Created" });
-            DropIndex("dbo.Permissions", new[] { "ResourceId" });
-            DropIndex("dbo.Permissions", new[] { "RoleId" });
+            DropIndex("dbo.AspNetPermissions", new[] { "ModifiedBy" });
+            DropIndex("dbo.AspNetPermissions", new[] { "Modified" });
+            DropIndex("dbo.AspNetPermissions", new[] { "CreatedBy" });
+            DropIndex("dbo.AspNetPermissions", new[] { "Created" });
+            DropIndex("dbo.AspNetPermissions", new[] { "ResourceId" });
+            DropIndex("dbo.AspNetPermissions", new[] { "RoleId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.Resources");
+            DropTable("dbo.AspNetResources");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Permissions");
+            DropTable("dbo.AspNetPermissions");
         }
     }
 }

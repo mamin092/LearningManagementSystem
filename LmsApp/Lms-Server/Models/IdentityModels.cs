@@ -6,6 +6,7 @@ namespace Lms.Server.Models
 {
 
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -21,11 +22,17 @@ namespace Lms.Server.Models
         }
 
         // our own properties --> column 
+
+        [Required]
+        public string RoleId { get; set; }
+        [ForeignKey("RoleId")]
+        public virtual ApplicationRole Role { get; set; }
+
+
     }
 
     public class ApplicationRole : IdentityRole
     {
-
         [MaxLength(20)]
         public string LandingRoute { get; set; }
 
@@ -95,15 +102,20 @@ namespace Lms.Server.Models
         [Index]
         [MaxLength(128)]
         public string RoleId { get; set; }
+
         [ForeignKey("RoleId")]
         public virtual ApplicationRole ApplicationRole { get; set; }
+
         [Index]
         [MaxLength(128)]
         public string ResourceId { get; set; }
+
         [ForeignKey("ResourceId")]
         public virtual AspNetResource Resource { get; set; }
+
         public bool IsAllowed { get; set; }
-        public bool IsDisable { get; set; }
+
+        public bool IsDisabled { get; set; }
 
     }
 }

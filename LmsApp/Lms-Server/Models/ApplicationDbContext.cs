@@ -16,9 +16,13 @@ namespace Lms.Server.Models
             return new ApplicationDbContext();
         }
 
+        ////public IDbSet<AspNetResource> AspNetResources { get; set; }
+        ////public IDbSet<AspNetPermission> AspNetPermissions { get; set; }
+
         public IDbSet<AspNetResource> AspNetResources { get; set; }
+
         public IDbSet<AspNetPermission> AspNetPermissions { get; set; }
 
-        public System.Data.Entity.DbSet<Lms.Server.Models.ApplicationRole> IdentityRoles { get; set; }
+        //public System.Data.Entity.DbSet<Lms.Server.Models.ApplicationRole> IdentityRoles { get; set; }
     }
 }
